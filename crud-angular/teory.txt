@@ -1,0 +1,43 @@
+https://angular.io/cli
+
+ Uma aplicação angular pode ser pensada como um quebra-cabeça onde cada peça (ou cada módulo)
+ é necessária para poder ver a imagem completa.
+
+_____[Angular modularity]_____
+- ng generate module <name> --routing
+
+NgModules consolidam componentes, diretivas e canais em blocos coesos de funcionalidade,
+cada um focado em uma área de recurso, domínio de negócios de aplicativo, fluxo de trabalho
+ou coleção comum de utilitários.
+
+Os módulos também podem adicionar serviços ao aplicativo. Esses serviços podem ser desenvolvidos
+internamente, como algo que você mesmo desenvolveria ou vir de fontes externas, como o roteador
+Angular e o cliente HTTP.
+
+Os módulos podem ser carregados antecipadamente quando o aplicativo é iniciado ou carregados lentamente
+de forma assíncrona pelo roteador.
+
+_____[Rotas e Lazy Loading]_____
+
+_____[Componentes]_____
+- ng generate component <moduleName>/<name>
+
+- Código necessário para renderizar as informações na tela
+- Validações básicas
+
+_____[Services]_____
+- ng generate service <moduleName>/<servicesFile>/<ServiceName>
+
+- Lógica da aplicação
+- Manipulação de dados
+
+_____[Injeção de dependências]_____
+- Fornece uma instância automática para a classe
+
+_____[Chamadas síncronas e assíncronas]_____
+
+_____[APIs]_____
+
+_____[End-Points]_____
+
+_____[Observables - RXJS]_____
