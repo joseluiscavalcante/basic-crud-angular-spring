@@ -1,5 +1,8 @@
 package com.cavalcante.crudspring.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,6 +17,8 @@ public class Course {
 
   @Id  // Chave primária
   @GeneratedValue(strategy = GenerationType.AUTO)  // Chave sequencial - Gerar automaticamente
+  @JsonProperty("_id")  // Permite escolher novo nome para a propriedade quando ela virar JSON
+  // @JsonIgnore --> Ignora a propriedade e não envia para o JSON
   private Long id;
 
   //@Column(name = "nome") --> Associar ao nome real na tabela do banco
