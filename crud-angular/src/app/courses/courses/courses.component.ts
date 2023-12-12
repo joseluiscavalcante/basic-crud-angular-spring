@@ -5,6 +5,7 @@ import { Course } from '../model/course';
 import { CoursesService } from '../services/courses.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-courses',
@@ -13,14 +14,18 @@ import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/err
 })
 export class CoursesComponent implements OnInit {
   public courses$: Observable<Course[]>;  // Identifica que é um observable
-  public displayedColumns = ['_id', 'name', 'category']  // Tipada por inferência de tipos
+  public displayedColumns = ['_id', 'name', 'category', 'actions']  // Tipada por inferência de tipos
 
   constructor(
     private coursesService: CoursesService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private router: Router,
+    private route: ActivatedRoute
     ) {
-    // Inicialização das variáveis no construtor devido ao  Strict mode do Angular
-    // O modo estrito melhora a capacidade de manutenção e ajuda a detectar bugs com antecedência.
+    /*
+      Inicialização das variáveis no construtor devido ao  Strict mode do Angular
+      O modo estrito melhora a capacidade de manutenção e ajuda a detectar bugs com antecedência.
+    */
     this.courses$ = this.coursesService.list()
     .pipe(
       catchError(error => {
@@ -42,4 +47,9 @@ export class CoursesComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  onAdd() {
+    console.log('onAdd');
+    this.router.navigate(['new'], {relativeTo: this.route});  // Realiza a navegação até a rota new com base na rota atual
+  }
 }

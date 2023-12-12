@@ -21,7 +21,7 @@ export class CoursesService {
       first(),
 
       // Simular tempo de espera da resposta do servidor
-      delay(5000),
+      delay(2000),
 
       // Debugar - Verificar se está tudo funcionando
       tap(courses => console.log(courses))
