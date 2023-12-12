@@ -1,0 +1,53 @@
+_____[Bean]_____
+No contexto do Spring Framework, o termo "bean" refere-se a um objeto gerenciado pelo contêiner 
+de IoC (Inversão de Controle) do Spring. Um bean é simplesmente um objeto que é instanciado, 
+configurado e gerenciado pelo Spring IoC Container.
+
+Existem vários tipos de beans no Spring, incluindo:
+  - @Component: É a anotação genérica para indicar que uma classe é um componente gerenciado pelo Spring.
+  - @Service: Especificamente utilizado para classes que fornecem serviços na camada de negócios da aplicação.
+  - @Repository: Utilizado para classes que acessam o banco de dados e realizam operações de persistência.
+  - @Controller: Utilizado para classes que atuam como controladores em uma arquitetura MVC, respondendo a requisições web.
+
+Quando dizemos que um objeto é gerenciado pelo contêiner de IoC (Inversão de Controle) do Spring, estamos nos referindo 
+ao fato de que a responsabilidade pela criação, configuração e gestão do ciclo de vida desse objeto é transferida para o 
+próprio Spring Framework, em vez de ser controlada pelo código da aplicação.
+
+
+_____[IoC]_____
+A IoC é um princípio de design em que a responsabilidade de criar e manter as instâncias de objetos é invertida, ou seja, 
+é delegada a um contêiner ou framework.
+O processo funciona da seguinte forma:
+  1. Registro do Bean: As classes que desejamos que se tornem objetos gerenciados pelo Spring são geralmente anotadas com 
+  anotações específicas, como @Component, @Service, @Repository, @Controller ou @RestController. Essas anotações informam ao Spring que essas 
+  classes devem ser gerenciadas.
+  2. Escaneamento: Durante a inicialização da aplicação, o Spring escaneia o classpath em busca dessas anotações ou 
+  configurações XML que indicam quais classes devem ser consideradas como beans.
+  3. Criação e Configuração: O Spring é responsável por instanciar esses objetos (beans) e injetar as dependências necessárias, 
+  seja por meio de construtores, métodos ou campos, dependendo da configuração.
+  4. Injeção de Dependência: O Spring resolve automaticamente as dependências entre os beans. Se um bean A depende de um bean B, 
+  o Spring garante que o bean B seja injetado no bean A.
+  5. Gerenciamento do Ciclo de Vida: O Spring gerencia o ciclo de vida dos objetos, executando métodos específicos 
+  (como métodos de inicialização e destruição) quando apropriado.
+
+
+_____[Autowired]_____
+Anotação usada para realizar a injeção de dependência automaticamente. Quando você marca um campo, método ou construtor com @Autowired, 
+o Spring IoC Container procura automaticamente por um bean correspondente e o injeta no ponto especificado, resolvendo assim as dependências.
+
+Isso elimina a necessidade de código manual para buscar e criar instâncias de dependências. Ao usá-lo, você permite que o Spring cuide desses 
+detalhes, facilitando a manutenção e melhorando a testabilidade do código.
+
+
+_____[Injeção de Dependência]_____
+A injeção de dependência é um conceito fundamental em design de software e programação orientada a objetos, especialmente no contexto de 
+desenvolvimento de software em larga escala. Essa técnica visa melhorar a modularidade, a flexibilidade e a testabilidade do código, promovendo 
+a separação de preocupações e reduzindo o acoplamento entre componentes.
+
+Em termos simples, a injeção de dependência é uma forma de fornecer dependências a um componente (como uma classe ou função) de fora, em vez de 
+deixar esse componente criar ou gerenciar suas próprias dependências. Dependências são objetos ou serviços que uma classe precisa para realizar suas operações.
+
+_____[Autowired x Construtor]_____
+Boa Prática!!!
+- Em casos onde há atributos obrigatórios (que a classe não funcionará direito sem ele), existe a preferência por fazer a injeção via construtor.
+- Caso seja feito via atributo ou via setter, pode indicar que a classe necessitará da instância num 2º momento.

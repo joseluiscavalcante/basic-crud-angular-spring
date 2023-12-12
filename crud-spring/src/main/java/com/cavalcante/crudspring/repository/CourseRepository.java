@@ -6,10 +6,11 @@ import org.springframework.stereotype.Repository;
 import com.cavalcante.crudspring.model.Course;
 
 
-// Estrutura que...
+// Notação usada em conjunto com classes que implementam a lógica de acesso a banco de dados.
 @Repository
-public interface CourseRepository extends JpaRepository<Long, Course> {
-
+// Interface que facilita o acesso ao banco de dados com muitos métodos úteis definidos (Spring Data JPA) -- <Entity, PrimaryKeyType>
+public interface CourseRepository extends JpaRepository<Course, Long> {
+  
   
 }
 
