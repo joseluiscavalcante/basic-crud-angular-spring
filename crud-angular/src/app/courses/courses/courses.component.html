@@ -1,5 +1,5 @@
 <mat-card>
-  <mat-card-header>
+  <mat-card-header id="tableDescription">
     <mat-toolbar color="primary">Cursos Disponíveis</mat-toolbar>
   </mat-card-header>
 
@@ -10,7 +10,13 @@
       condição do *ngIf for falsa ou seja, quando os dados não foram carregados.
     -->
     <div *ngIf="courses$ | async as courses; else loading">
-      <table mat-table [dataSource]="courses" class="mat-elevation-z8">
+      <table mat-table [dataSource]="courses" class="mat-elevation-z8" aria-describedby="tableDescription">
+        <!-- ID Column -->
+        <ng-container matColumnDef="_id">
+          <th mat-header-cell *matHeaderCellDef>ID</th>
+          <td mat-cell *matCellDef="let course">{{ course._id }}</td>
+        </ng-container>
+
         <!-- Name Column -->
         <ng-container matColumnDef="name">
           <th mat-header-cell *matHeaderCellDef>Curso</th>

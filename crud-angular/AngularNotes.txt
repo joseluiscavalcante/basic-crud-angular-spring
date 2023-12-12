@@ -41,3 +41,16 @@ _____[APIs]_____
 _____[End-Points]_____
 
 _____[Observables - RXJS]_____
+
+_____[Cross-Origin Resource Sharing (CORS)]_____
+- CORS significa Cross-Origin Resource Sharing.
+- É uma política de segurança nos navegadores web.
+- Navegadores aplicam a Same-Origin Policy para evitar riscos de segurança.
+- Impede solicitações de recursos entre origens diferentes.
+- Em situações legítimas, é preciso permitir solicitações entre origens diferentes.
+- O CORS permite que servidores indiquem quais origens têm permissão para acessar seus recursos.
+- Servidores usam cabeçalhos HTTP, como "Access-Control-Allow-Origin", para especificar origens permitidas.
+    - Exemplo: Access-Control-Allow-Origin: https://dominio-permitido.com
+- O navegador verifica se a origem da solicitação está na lista de origens permitidas pelo servidor.
+- Uso comum: Encontrado em solicitações AJAX e Fetch API ao fazer solicitações HTTP a partir de scripts em uma página web.
+- Para desenvolvimento local: Criar proxy.conf.js -> Raiz do projeto

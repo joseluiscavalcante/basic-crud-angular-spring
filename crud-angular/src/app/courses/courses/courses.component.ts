@@ -13,7 +13,7 @@ import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/err
 })
 export class CoursesComponent implements OnInit {
   public courses$: Observable<Course[]>;  // Identifica que é um observable
-  public displayedColumns = [ 'name', 'category']  // Tipada por inferência de tipos
+  public displayedColumns = ['_id', 'name', 'category']  // Tipada por inferência de tipos
 
   constructor(
     private coursesService: CoursesService,
