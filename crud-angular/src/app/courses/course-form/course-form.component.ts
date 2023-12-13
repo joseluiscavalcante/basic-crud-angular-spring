@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { CoursesService } from '../services/courses.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-course-form',
@@ -12,6 +14,8 @@ export class CourseFormComponent {
 
   constructor(
     private formBuilder: FormBuilder,
+    private service: CoursesService,
+    private _snackBar: MatSnackBar
   ) {
     this.form = this.formBuilder.group({
       name: [null],
@@ -19,4 +23,19 @@ export class CourseFormComponent {
     });
   }
 
+  private onError() {
+    this._snackBar.open('Erro ao salvar curso.', 'Fechar', {duration: 5000});
+  }
+
+  onSubmit() {
+    this.service.save(this.form.value).subscribe({
+      next: (result) => console.log(result),
+      error: () => this.onError(),
+      complete: () => console.log('ok')
+    });
+  }
+
+  onCancel() {
+
+  }
 }

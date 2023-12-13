@@ -1,0 +1,15 @@
+mat-card {
+  max-width: 80%;
+  margin: 2em auto;  // 2x a margem padrão na vertical + automático na horizontal (centraliza)
+  text-align: center;  // Garantia de centralização
+  min-width: 300px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.min-width {
+  width: 100%;
+  min-width: 150px;
+}
