@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { delay, first, Observable, tap } from 'rxjs';
 
 import { Course } from '../model/course';
-import { Observable, delay, first, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -21,14 +21,15 @@ export class CoursesService {
       first(),
 
       // Simular tempo de espera da resposta do servidor
-      delay(2000),
+      delay(1000),
 
       // Debugar - Verificar se está tudo funcionando
       tap(courses => console.log(courses))
     );
   }
 
-  save(record: Course) {
+  // Partial é usado pois estão sendo enviados apenas uma parte dos atributos da entidade
+  save(record: Partial<Course>) {
     return this.httpClient.post<Course>(this.API, record).pipe(first());
   }
 }
