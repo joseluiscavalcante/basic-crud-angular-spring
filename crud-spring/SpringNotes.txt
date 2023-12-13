@@ -51,3 +51,6 @@ _____[Autowired x Construtor]_____
 Boa Prática!!!
 - Em casos onde há atributos obrigatórios (que a classe não funcionará direito sem ele), existe a preferência por fazer a injeção via construtor.
 - Caso seja feito via atributo ou via setter, pode indicar que a classe necessitará da instância num 2º momento.
+
+_____[List of HTTP status codes]_____
+https://en.wikipedia.org/wiki/List_of_HTTP_status_codes
