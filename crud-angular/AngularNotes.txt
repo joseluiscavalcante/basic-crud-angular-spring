@@ -54,3 +54,16 @@ _____[Cross-Origin Resource Sharing (CORS)]_____
 - O navegador verifica se a origem da solicitação está na lista de origens permitidas pelo servidor.
 - Uso comum: Encontrado em solicitações AJAX e Fetch API ao fazer solicitações HTTP a partir de scripts em uma página web.
 - Para desenvolvimento local: Criar proxy.conf.js -> Raiz do projeto
+
+_____[Componentes Inteligentes - Smart Components - Containers]_____
+- Responsabilidades: Os componentes inteligentes geralmente lidam com a lógica de negócios, a comunicação com serviços e a manipulação de dados.
+- Comunicação: Eles podem interagir diretamente com serviços, disparar eventos e conter a lógica que coordena as ações dentro do aplicativo.
+- Exemplo: Um componente que busca dados de um serviço, processa esses dados e os fornece para componentes de apresentação.
+
+_____[Componentes de Apresentação - Dumb Components - Components]_____
+- Responsabilidades: Esses componentes se concentram apenas na apresentação e na exibição de dados. Eles não possuem conhecimento da lógica de negócios.
+- Comunicação: Os componentes de apresentação geralmente recebem dados por meio de propriedades de entrada (@Input) e emitem eventos para notificar sobre interações do usuário (@Output).
+- Exemplo: Um componente que exibe uma lista de itens ou um formulário simples.
+
+**Ao separar a lógica de apresentação da lógica de negócios, você cria uma arquitetura mais modular e fácil de entender. Isso facilita a manutenção, teste e reutilização de código.
+**Essa abordagem se alinha com o princípio de Single Responsibility Principle (SRP), um dos princípios do SOLID, que sugere que uma classe (ou, neste caso, um componente) deve ter apenas uma razão para mudar.

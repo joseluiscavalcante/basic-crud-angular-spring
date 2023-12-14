@@ -1,11 +1,11 @@
-import { Observable, catchError, of } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
-
-import { Course } from '../model/course';
-import { CoursesService } from '../services/courses.service';
 import { MatDialog } from '@angular/material/dialog';
-import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
 import { ActivatedRoute, Router } from '@angular/router';
+import { catchError, Observable, of } from 'rxjs';
+import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
+
+import { Course } from '../../model/course';
+import { CoursesService } from '../../services/courses.service';
 
 @Component({
   selector: 'app-courses',
@@ -14,7 +14,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class CoursesComponent implements OnInit {
   public courses$: Observable<Course[]>;  // Identifica que é um observable
-  public displayedColumns = ['_id', 'name', 'category', 'actions']  // Tipada por inferência de tipos
 
   constructor(
     private coursesService: CoursesService,
@@ -46,7 +45,7 @@ export class CoursesComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { /* TODO document why this method 'ngOnInit' is empty */ }
 
   onAdd() {
     console.log('onAdd');

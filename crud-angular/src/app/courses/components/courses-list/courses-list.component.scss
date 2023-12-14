@@ -1,0 +1,15 @@
+table {
+  overflow: auto;  // Barras de rolagem serão adicionadas apenas quando necessário.
+  max-height: 600px;
+
+}
+
+.action-col {
+  text-align: center;
+}
+
+.align-horizontally {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
