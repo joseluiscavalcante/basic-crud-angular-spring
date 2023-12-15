@@ -33,7 +33,7 @@
     </th>
 
     <td mat-cell *matCellDef = "let course" class="action-col">
-      <button mat-icon-button color="accent" aria-label="Editar curso">
+      <button mat-icon-button color="accent" aria-label="Editar curso" (click)="onEdit(course)">
         <mat-icon>edit</mat-icon>
       </button>
 

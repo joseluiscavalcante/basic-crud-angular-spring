@@ -12,6 +12,7 @@
       *ngIf="courses$ | async as courses; else loading"
       [courses]="courses"
       (addEvent)="onAdd()"
+      (editEvent)="onEdit($event)"
     ></app-courses-list>
 
     <!-- Template relacionado com o *NgIf -->
