@@ -33,9 +33,11 @@ public class CourseController {
   // Complementa a URL da API, permitindo que seja especificado um ID para retornar apenas 1 objeto
   @GetMapping("/{id}")
   // PathVariable: Indica que estamos capturando o valor do id passado no caminho da API
-  public Optional<Course> findById(@PathVariable("id") Long id) {
-    return courseRepository.findById(id);
-    
+  public ResponseEntity<Course> findById(@PathVariable("id") Long id) {
+    // Optional: O objeto pode existir ou não no banco de dados, se não, devemos fazer o tratamento do erro.
+    return courseRepository.findById(id)
+      .map(data -> ResponseEntity.ok().body(data))  // Se o objeto existir [ok()] retorne os dados no body;
+      .orElse(ResponseEntity.notFound().build());  // Se o objeto não for encontrado, envie uma mensagem de erro.
   }
 
   @PostMapping  // ~~@RequestMapping(method = RequestMethod.POST)
