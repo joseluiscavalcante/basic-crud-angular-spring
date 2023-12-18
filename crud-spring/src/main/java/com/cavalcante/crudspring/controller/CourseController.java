@@ -1,7 +1,6 @@
 package com.cavalcante.crudspring.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +16,8 @@ import com.cavalcante.crudspring.model.Course;
 import com.cavalcante.crudspring.repository.CourseRepository;
 
 import lombok.AllArgsConstructor;
+import org.springframework.web.bind.annotation.PutMapping;
+
 
 @RestController  // Fala para o spring que essa classe contem um end-point para acessar a api. Por trás dos panos é um java servlet
 @RequestMapping("/api/courses")  // Define o end-point
@@ -46,5 +47,21 @@ public class CourseController {
   public Course create (@RequestBody Course course) {
     // Salva e retorna o valor recebido
     return courseRepository.save(course);
+  }
+
+  @PutMapping("/{id}")
+  public ResponseEntity<Course> update(@PathVariable("id") Long id, @RequestBody Course course) {
+    return courseRepository.findById(id)
+    // Se um valor estiver presente, aplique a função de mapeamento fornecido a ele.
+    .map(recordFound -> {
+      // Alteração dos valores.
+      recordFound.setName(course.getName());
+      recordFound.setCategory(course.getCategory());
+      // Salvando o objeto com os valores atualizados.
+      Course updated = courseRepository.save(recordFound);
+      // Retorno do PUT para informar o resultado da operação, indicando que a atualização foi concluída com sucesso.
+      return ResponseEntity.ok().body(updated);
+    })
+    .orElse(ResponseEntity.notFound().build());
   }
 }
