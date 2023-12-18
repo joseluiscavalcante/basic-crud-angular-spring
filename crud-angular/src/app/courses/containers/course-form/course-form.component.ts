@@ -13,7 +13,7 @@ import { Course } from '../../model/course';
   styleUrl: './course-form.component.scss'
 })
 export class CourseFormComponent implements OnInit {
-
+  // FormGroup gerencia e valida um conjunto de controles em um formulário.
   form = this.formBuilder.group({
     _id: new FormControl<string>('', {nonNullable: true}),
     name: new FormControl<string>('', {nonNullable: true}),
@@ -35,7 +35,7 @@ export class CourseFormComponent implements OnInit {
       _id: course._id,
       name: course.name,
       category: course.category
-    })
+    });
   }
 
   private onError() {
@@ -52,11 +52,11 @@ export class CourseFormComponent implements OnInit {
   }
 
   onSubmit() {
+    // 'this.form.value' retorna um objeto que representa o estado atual do formulário.
     this.service.save(this.form.value).subscribe({
       next: (result) => console.log(result),
       error: () => this.onError(),
       complete: () => this.onSuccess()
     });
   }
-
 }
