@@ -20,6 +20,7 @@ export class CoursesListComponent {
   */
   @Output() addEvent = new EventEmitter(false);
   @Output() editEvent = new EventEmitter(false);
+  @Output() removeEvent = new EventEmitter(false);
 
   readonly displayedColumns = ['_id', 'name', 'category', 'actions']  // Tipada por inferência de tipos
 
@@ -29,5 +30,9 @@ export class CoursesListComponent {
 
   onEdit(course: Course) {
     this.editEvent.emit(course);
+  }
+
+  onRemove(course: Course) {
+    this.removeEvent.emit(course);
   }
 }

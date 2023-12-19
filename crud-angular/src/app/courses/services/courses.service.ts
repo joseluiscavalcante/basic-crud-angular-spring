@@ -21,14 +21,14 @@ export class CoursesService {
       first(),
 
       // Simular tempo de espera da resposta do servidor
-      delay(1000),
+      // delay(1000),
 
       // Debugar - Verificar se está tudo funcionando
       tap(courses => console.log(courses))
     );
   }
 
-  loadById(id: number) {
+  loadById(id: string) {
     return this.httpClient.get<Course>(`${this.API}/${id}`);
   }
 
@@ -46,5 +46,9 @@ export class CoursesService {
 
   private update(record: Partial<Course>) {
     return this.httpClient.put<Course>(`${this.API}/${record._id}`, record).pipe(first());
+  }
+
+  delete(id: string) {
+    return this.httpClient.delete(`${this.API}/${id}`).pipe(first());
   }
 }
