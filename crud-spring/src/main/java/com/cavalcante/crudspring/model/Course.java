@@ -1,5 +1,8 @@
 package com.cavalcante.crudspring.model;
 
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.SQLRestriction;
+import org.hibernate.annotations.Where;
 import org.hibernate.validator.constraints.Length;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -16,6 +19,8 @@ import lombok.Data;
 
 @Data  // Fornece os getters e setters ++
 @Entity  // Especificando a classe como uma entidade, que faz mapeamento com o Banco de dados
+@SQLDelete(sql = "UPDATE Course SET status = 'Inativo' WHERE id = ?")  // Modifica o código sql utilizado pelo deleteById()
+@SQLRestriction(value = "status = 'Ativo'")  // Adiciona esse filtro na cláusula WHERE dos SELECT's
 // @Table(name = "cursos") --> Se a tabela já existir
 public class Course {
 
@@ -27,7 +32,7 @@ public class Course {
 
   @NotBlank
   @NotNull
-  @Length(min = 5, max = 100)
+  @Length(min = 3, max = 100)
   //@Column(name = "nome") --> Associar ao nome real na tabela do banco
   @Column(length = 100, nullable = false)  // Especifica o tamanho da string e informa que ela não pode ser nula
   private String name;
@@ -38,4 +43,9 @@ public class Course {
   @Column(length = 10, nullable = false)
   private String category;
 
+  @NotNull
+  @Length(max = 10)
+  @Pattern(regexp = "Ativo|Inativo")
+  @Column(length = 10, nullable = false)
+  private String status = "Ativo";
 }
