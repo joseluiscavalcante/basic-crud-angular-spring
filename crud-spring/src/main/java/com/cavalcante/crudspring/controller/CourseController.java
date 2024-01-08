@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cavalcante.crudspring.model.Course;
+import com.cavalcante.crudspring.dto.CourseDTO;
 import com.cavalcante.crudspring.service.CourseService;
 
 import jakarta.validation.Valid;
@@ -36,27 +36,27 @@ public class CourseController {
   }
 
   @GetMapping  // ~~@RequestMapping(method = RequestMethod.GET)
-  public List<Course> list() {
+  public List<CourseDTO> list() {
     return courseService.list();
   }
 
   // Complementa a URL da API, permitindo que seja especificado um ID para retornar apenas 1 objeto
   @GetMapping("/{id}")
   // PathVariable: Indica que estamos capturando o valor do id passado no caminho da API
-  public Course findById(@PathVariable("id") @NotNull @Positive Long id) {
+  public CourseDTO findById(@PathVariable("id") @NotNull @Positive Long id) {
     return courseService.findById(id);
   }
 
   @PostMapping  // ~~@RequestMapping(method = RequestMethod.POST)
   @ResponseStatus(code = HttpStatus.CREATED)  // Altera o status http da resposta para 201 - "A solicitação foi atendida, resultando na criação de um novo recurso".
   // @RequestBody --> indica que um controller method deve esperar o corpo da requisição HTTP para ser convertido automaticamente em um objeto Java correspondente.
-  public Course create (@RequestBody @Valid Course course) {
-    return courseService.create(course);
+  public CourseDTO create (@RequestBody @Valid CourseDTO courseDTO) {
+    return courseService.create(courseDTO);
   }
 
   @PutMapping("/{id}")
-  public Course update(@PathVariable("id") @NotNull @Positive Long id, @RequestBody @Valid Course course) {
-    return courseService.update(id, course);
+  public CourseDTO update(@PathVariable("id") @NotNull @Positive Long id, @RequestBody @Valid CourseDTO courseDTO) {
+    return courseService.update(id, courseDTO);
   }
 
   @DeleteMapping("/{id}")
